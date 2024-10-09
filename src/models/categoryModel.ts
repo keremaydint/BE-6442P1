@@ -1,12 +1,28 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Category } from "@prisma/client";
 
 const prisma = new PrismaClient();
+interface CategoryQuery {
+  showDeleted?: string;
+}
 
-export const getAll = async () => {
-  return await prisma.category.findMany();
+export const getAll = async (query: CategoryQuery) => {
+  const { showDeleted } = query;
+  const where: any = {};
+
+  const filters: { [key: string]: any } = {
+    true: {},
+    false: { deleted_at: null },
+    onlyDeleted: { deleted_at: { not: null } },
+  };
+
+  if (showDeleted && filters[showDeleted]) {
+    Object.assign(where, filters[showDeleted]);
+  }
+
+  return await prisma.category.findMany({ where });
 };
 
-export const getById = async (id: number) => {
+export const getById = async (id: number): Promise<Category | null> => {
   return await prisma.category.findUnique({
     where: { id },
   });

@@ -9,7 +9,7 @@ import {
 
 export const getCategories = async (req: Request, res: Response) => {
   try {
-    const categories = await getAll();
+    const categories = await getAll(req.query);
     res.status(200).json(categories);
   } catch (error) {
     res

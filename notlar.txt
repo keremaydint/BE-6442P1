@@ -1,0 +1,44 @@
+ORM
+İlişkisel veritabanları
+express - prisma Orm 
+
+Sql sorguları yapmadan veritabanı işlemleri yapmayı sağlayan araçlar
+
+
+ODM
+İlişkisel olmayan veritabanları
+mongodb - mongoose gibi 
+
+
+Prisma ORM
+
+    npm install prisma --save-dev
+    npm install @prisma/client
+    npx prisma init
+        npx prisma migrate dev --name init 
+                                      burası migrate ismi/notu
+        
+        npx prisma generate
+
+
+
+
+
+MVC (Model - View - Controller)
+
+Model => Veritabanı ile etkileşimde bulunduğumuz katman (ORM kısmı)
+         Veritabanı erişimi sağlar ve yönetir
+
+View  => Kullanıcının gördüğü arayüz , Html-css-js kodları bu kısımda bulunur
+
+Controller =>  Model ile View arasındaki ilişkiyi sağlar , ara katman
+
+akış
+View -> Controller -> Model (istek ulaştı)
+                      Model -> Controller -> View (istek sonucu döndü)
+
+
+
+                    
+EJS - Template Engine
+    Html dosyaları içerisinde JS kodları çalıştırmaya yarıyor

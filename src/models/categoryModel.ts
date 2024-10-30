@@ -24,7 +24,7 @@ export const getAll = async (query: CategoryQuery) => {
 
 export const getById = async (id: number): Promise<Category | null> => {
   return await prisma.category.findUnique({
-    where: { id },
+    where: { id: Number(id) },
   });
 };
 
@@ -36,14 +36,14 @@ export const create = async (name: string) => {
 
 export const update = async (id: number, name: string) => {
   return await prisma.category.update({
-    where: { id },
+    where: { id: Number(id) },
     data: { name },
   });
 };
 
 export const softDelete = async (id: number) => {
   return await prisma.category.update({
-    where: { id },
+    where: { id: Number(id) },
     data: { deleted_at: new Date() },
   });
 };
